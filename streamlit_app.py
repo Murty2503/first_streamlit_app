@@ -44,8 +44,7 @@ except URLError as e:
 #streamlit.text(fruityvice_response.json())
 # the below line is to flatten json and assign it to a pandas variable called fruityvice_normalized
 # this below line is to convert the json data into tabular form
-streamlit.stop()
-import snowflake.connector
+#import snowflake.connector
 #my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT * from fruit_load_list")
@@ -61,6 +60,8 @@ if streamlit.button('Get Fruit Load List'):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows =get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
+
+streamlit.stop()
 
 add_my_fruit = streamlit.text_input('What fruit would you like to Add?','Kiwi')
 streamlit.write('Thanks for Adding',add_my_fruit)
